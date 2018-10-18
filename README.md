@@ -1,6 +1,27 @@
 # KSolomin_infra
 KSolomin Infra repository
 
+Домашнее задание 4:
+
+testapp_IP = 35.240.75.150
+testapp_port = 9292
+
+1. Команда для запуска инстанса и передачи ему локального startup скрипта:
+
+gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --metadata-from-file startup-script=<путь до скрипта>/KSolomin_infra/startup.sh
+
+2. Через startup-script-url сделать почему-то не получилось:
+
+gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family ubuntu-1604-lts --image-project=ubuntu-os-cloud --machine-type=g1-small --tags puma-server --restart-on-failure --metadata-from-file startup-script-url=gs://my-script-bucket/startup.sh
+
+ERROR: (gcloud.compute.instances.create) Unable to read file [gs://my-script-bucket/startup.sh]: [Errno 2] No such file or directory: 'gs://my-script-bucket/startup.sh'
+
+Бакет публичный. Та же ошибка возникла при указании ссылки на гист.
+
+3. Создать правило для файрволла с помощью gcloud можно так:
+
+gcloud compute firewall-rules create default-puma-server --target-tags=puma-server --allow tcp:9292 
+
 Домашнее задание 3:
 
 bastion_IP = 35.210.55.204
