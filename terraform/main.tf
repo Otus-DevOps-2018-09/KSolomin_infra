@@ -5,10 +5,11 @@ provider "google" {
 }
 
 resource "google_compute_instance" "app" {
-  name         = "reddit-app"
+  name         = "reddit-app-${count.index}"
   machine_type = "g1-small"
   zone         = "${var.zone}"
   tags         = ["reddit-app"]
+  count        = "${var.instances_count}"
 
   boot_disk {
     initialize_params {
@@ -29,7 +30,7 @@ resource "google_compute_instance" "app" {
     type        = "ssh"
     user        = "appuser"
     agent       = false
-    private_key = "${var.public_key}"
+    private_key = "${file(var.private_key_path)}"
   }
 
   provisioner "file" {
@@ -53,10 +54,4 @@ resource "google_compute_firewall" "puma" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
-}
-
-resource "google_compute_project_metadata" "ssh-keys" {
-  metadata {
-    ssh-keys = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
-  }
 }

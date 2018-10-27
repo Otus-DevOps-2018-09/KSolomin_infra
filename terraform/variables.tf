@@ -15,10 +15,14 @@ variable disk_image {
   description = "Disk image"
 }
 
-variable public_key {
-  description = "appuser's public key"
+variable private_key_path {
+  description = "appuser's private key path"
 }
 
 variable zone {
   default = "europe-west1-b"
+}
+
+variable instances_count {
+  default = 1
 }
