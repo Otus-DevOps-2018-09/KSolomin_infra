@@ -22,9 +22,3 @@ module "vpc" {
   source        = "../modules/vpc"
   source_ranges = ["94.19.235.207/32"]
 }
-
-module "storage-bucket" {
-  source  = "SweetOps/storage-bucket/google"
-  version = "0.1.1"
-  name    = ["code-red"]
-}
