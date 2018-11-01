@@ -3,11 +3,20 @@ provider "google" {
  project = "${var.project}"
  region = "${var.region}"
 }
+
 module "storage-bucket" {
  source = "SweetOps/storage-bucket/google"
  version = "0.1.1"
- name = ["storage-bucket-test", "storage-bucket-test2"]
+ name = ["states-of-terraform"]
 }
-output storage-bucket_url {
+
+output "storage-bucket_url" {
  value = "${module.storage-bucket.url}"
+}
+
+terraform {
+  backend "gcs" {
+    bucket = "states-of-terraform"
+    prefix = "infrastructure"
+  }
 }
