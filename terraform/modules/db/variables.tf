@@ -4,7 +4,7 @@ variable public_key_path {
 
 variable private_key_path {
   description = "Path to the private key used for ssh access"
-  default = "~/.ssh/appuser"
+  default     = "~/.ssh/appuser"
 }
 
 variable db_disk_image {

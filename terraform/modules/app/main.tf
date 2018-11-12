@@ -2,7 +2,7 @@ data "template_file" "puma_service" {
   template = "${file("../modules/app/files/puma.service")}"
 
   vars {
-    database_url = "${var.database_url}"
+    db_internal_ip = "${var.db_internal_ip}"
   }
 }
 
@@ -29,7 +29,9 @@ resource "google_compute_instance" "app" {
   metadata {
     ssh-keys = "appuser:${file(var.public_key_path)}"
   }
+}
 
+/*
   connection {
     type        = "ssh"
     user        = "appuser"
@@ -45,6 +47,7 @@ resource "google_compute_instance" "app" {
     script = "../modules/app/files/deploy.sh"
   }
 } 
+*/
 
 resource "google_compute_address" "app_ip" {
   name = "reddit-app-ip"
