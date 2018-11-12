@@ -1,6 +1,25 @@
 # KSolomin_infra
 KSolomin Infra repository
 
+Домашнее задание 8:
+
+1. После удаления с хоста склонированного репозитория вывод плейбука отличается:
+
+appserver                  : ok=2    changed=1    unreachable=0    failed=0
+
+Т.е. Ансибл сообщает, что произвел изменения на хосте.
+
+2. В репозиторий добавлен inventory.json и для его использования слегка изменен ansible.cfg. Вывод ansible all -m ping:
+
+appserver | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+dbserver | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
 Домашнее задание 7:
 
 1. С подключенном к terraform удаленном бэкендом и одновременном применении конфигурации наблюдается ошибка, так как state файл заблокирован.
