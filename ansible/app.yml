@@ -3,7 +3,7 @@
   hosts: app
   become: true
   vars:
-    db_host: 10.140.0.2
+    db_host: 10.132.0.4
   tasks:
     - name: Add unit file for Puma
       copy:
@@ -24,3 +24,4 @@
   handlers:
   - name: Reload puma
     systemd: name=puma state=restarted
+    

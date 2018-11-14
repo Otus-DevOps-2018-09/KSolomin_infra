@@ -4,11 +4,11 @@ variable project {
 
 variable region {
   description = "Region"
-  default     = "asia-east1"
+  default     = "europe-west1"
 }
 
 variable zone {
-  default = "asia-east1-b"
+  default = "europe-west1-b"
 }
 
 variable public_key_path {
