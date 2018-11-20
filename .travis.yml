@@ -7,7 +7,9 @@ before_install:
   bash
 
 script:
-- packer -v
+- whoami
+- pwd
+- ls -alh
 # - packer validate -var-file=./packer/variables.json.example ./packer/app.json
 
 notifications:
