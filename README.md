@@ -3,6 +3,12 @@ KSolomin Infra repository
 
 [![Build Status](https://travis-ci.com/Otus-DevOps-2018-09/KSolomin_infra.svg?branch=ansible-3)](https://travis-ci.com/Otus-DevOps-2018-09/KSolomin_infra)
 
+Домашнее задание 11:
+
+1. Воспользовались Vagrant для создания нашей тестовой локальной инфраструктуры из двух машин. Теперь можем отлаживать инфраструктурный код без необходимости применять изменения в облаке. 
+
+2. Познакомились с инструментом molecule для тестирования Ansible ролей.
+
 Домашнее задание 10:
 
 1. Dynamic inventory для двух окружений настроен через утилиту terraform-inventory и скрипт pull_inventory.sh: при применении ansible плейбуков мы дергаем state нужного окружения с backend'a.
