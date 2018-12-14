@@ -12,9 +12,13 @@ variable app_disk_image {
 }
 
 variable private_key_path {
-	default = "~/.ssh/appuser"
+  default = "~/.ssh/appuser"
 }
 
-variable database_url {
-	description = "Database URL"
+variable db_internal_ip {
+  description = "Database URL"
+}
+
+variable db_external_ip {
+  description = "Database External IP"
 }
